@@ -15,13 +15,13 @@ public class StudentRepository {
 
     public void addStudent(Student student)
     {
-        String key = student.getName();
+        String key = student.getStudentName();
         studentDb.put(key,student);
     }
 
     public void addTeacher(Teacher teacher)
     {
-        String key = teacher.getName();
+        String key = teacher.getTeacherName();
         teacherDb.put(key,teacher);
     }
 
