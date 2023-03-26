@@ -40,18 +40,8 @@ public class StudentService {
 
     public List<String> getStudentsByTeacherName(String name)
     {
-        HashMap<String,String> hm = studentRepository.studentTeacherDb;
-        List<String> list = new ArrayList<>();
-
-        for(String student: hm.keySet())
-        {
-            if(hm.get(student).equals(name))
-            {
-                list.add(student);
-            }
-        }
-
-        return list;
+        HashMap<String,List<String>> hm = studentRepository.studentTeacherDb;
+        return hm.get(name);
     }
 
     public List<String> getAllStudents()

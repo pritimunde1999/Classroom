@@ -2,32 +2,39 @@ package com.driver;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class StudentRepository {
 
     HashMap<String,Student> studentDb = new HashMap<>();
     HashMap<String,Teacher> teacherDb = new HashMap<>();
-    HashMap<String,String> studentTeacherDb = new HashMap<>();
+    HashMap<String, List<String>> studentTeacherDb = new HashMap<>();
 
     public void addStudent(Student student)
     {
-        String key = student.getStudentName();
+        String key = student.getName();
         studentDb.put(key,student);
     }
 
     public void addTeacher(Teacher teacher)
     {
-        String key = teacher.getTeacherName();
+        String key = teacher.getName();
         teacherDb.put(key,teacher);
     }
 
     public void addStudentTeacherPair(String student, String teacher)
     {
-        studentTeacherDb.put(student, teacher);
+        if(studentTeacherDb.containsKey(teacher))
+        {
+            studentTeacherDb.get(teacher).add(student);
+        }
+        else
+        {
+            List<String> list = new ArrayList<>();
+            list.add(student);
+            studentTeacherDb.put(teacher,list);
+        }
     }
 
     public Student getStudentByName(String name)
@@ -42,28 +49,33 @@ public class StudentRepository {
 
     public void deleteTeacherByName(String name)
     {
-        for(Map.Entry<String,String> entry : studentTeacherDb.entrySet())
+        List<String> student = studentTeacherDb.get(name);
+
+        for (String s : student)
         {
-            if(entry.getValue().equals(name))
-            {
-                String student = entry.getKey();
-                studentDb.remove(student);
-                studentTeacherDb.remove(student);
-            }
+            studentDb.remove(s);
         }
-       teacherDb.remove(name);
+        teacherDb.remove(name);
+        studentTeacherDb.remove(name);
     }
 
     public void deleteAllTeachers()
     {
-        Iterator<Map.Entry<String, String>> iterator = studentTeacherDb.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<String, String> entry = iterator.next();
-            if (studentDb.containsKey(entry.getValue())) {
-                iterator.remove();
-                studentDb.remove(entry.getKey());
+        List<String> studentName = new ArrayList<>();
+        for(List<String> list: studentTeacherDb.values())
+        {
+            for(String s: list)
+            {
+                studentName.add(s);
             }
         }
+
+        for(String s: studentName)
+        {
+            studentDb.remove(s);
+        }
+
         teacherDb.clear();
+        studentTeacherDb.clear();
     }
 }
