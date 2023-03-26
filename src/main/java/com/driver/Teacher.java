@@ -2,7 +2,7 @@ package com.driver;
 
 public class Teacher {
 
-    private String name;
+    private String teacherName;
 
     private int numberOfStudents;
 
@@ -12,18 +12,18 @@ public class Teacher {
 
     }
 
-    public Teacher(String name, int numberOfStudents, int age) {
-        this.name = name;
+    public Teacher(String teacherName, int numberOfStudents, int age) {
+        this.teacherName = teacherName;
         this.numberOfStudents = numberOfStudents;
         this.age = age;
     }
 
-    public String getName() {
-        return name;
+    public String getTeacherName() {
+        return teacherName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 
     public int getNumberOfStudents() {

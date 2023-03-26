@@ -2,7 +2,7 @@ package com.driver;
 
 public class Student {
 
-    private String name;
+    private String studentName;
     private int age;
     private double averageScore;
 
@@ -10,18 +10,18 @@ public class Student {
 
     }
 
-    public Student(String name, int age, double averageScore) {
-        this.name = name;
+    public Student(String studentName, int age, double averageScore) {
+        this.studentName = studentName;
         this.age = age;
         this.averageScore = averageScore;
     }
 
-    public String getName() {
-        return name;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String studentName){
+        this.studentName = studentName;
     }
 
     public int getAge() {
