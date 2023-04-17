@@ -30,11 +30,13 @@ public class StudentService {
 
     public Student getStudentByName(String name)
     {
+
         return studentRepository.getStudentByName(name);
     }
 
     public Teacher getTeacherByName(String name)
     {
+
         return studentRepository.getTeacherByName(name);
     }
 
