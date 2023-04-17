@@ -27,15 +27,4 @@ Delete a teacher and its students from the records: DELETE /students/delete-teac
 
 Delete all teachers and all students by them from the records: DELETE /students/delete-all-teachers No params or body required Return success message wrapped in a ResponseEntity object Controller Name - deleteAllTeachers
 
-Please make the following classes and make sure you name them exactly as following:
 
-StudentController.java
-StudentService.java
-StudentRepository.java
-Student.java
-Teacher.java
-Note:
-
-Use ResponseEntity object to return the required objects in the controllers
-Make sure you follow the requirements for the controller very very carefully or your application will give compilation error while running against hidden test cases
-Test all the APIs in postman before you submit.
